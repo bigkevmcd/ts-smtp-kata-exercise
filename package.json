@@ -1,0 +1,33 @@
+{
+  "name": "smtp-kata",
+  "version": "0.0.1",
+  "description": "An exercise in incoming email.",
+  "scripts": {
+    "start": "npm run serve",
+    "serve": "node dist/index.js",
+    "test": "node_modules/.bin/jest",
+    "build-ts": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigkevmcd/smtp-kata-ts.git"
+  },
+  "keywords": [
+    "typescript",
+    "smtp",
+    "kata"
+  ],
+  "author": "Kevin McDermott <bigkevmcd@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bigkevmcd/smtp-kata-ts/issues"
+  },
+  "homepage": "https://github.com/bigkevmcd/smtp-kata-ts#readme",
+  "devDependencies": {
+    "@types/jest": "^28.1.7",
+    "moq.ts": "^9.0.2",
+    "ts-jest": "^28.0.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}
