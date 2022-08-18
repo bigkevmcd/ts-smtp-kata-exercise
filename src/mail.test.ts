@@ -53,7 +53,7 @@ test('user is on vacation', () => {
     ["test1@example.com", new Date("2022-08-17")],
   ]);
 
-  let service = new VacationService(vacationData, mockMailSender.object(), mockClock);
+  let service = new VacationService(vacationData, mockMailSender.object(), mockClock.object());
 
   service.processMail(testMail);
 
@@ -67,14 +67,16 @@ test('user is not on vacation', () => {
     body: "To: test1@example.com\nSubject: testing\n\nThis is a test"
   };
   const mockMailSender = new Mock<MailSender>().setup(instance => instance.sendMail({to: ["test2@example.com"], from: "test1@example.com", body: "This user is on holiday"})).returns(undefined);
-
+  const mockClock = new Mock<Clock>().setup(instance => instance.currentDate()).returns( new Date("2022-08-16"));
   const vacationData = new Map<string, Date>([
     ["test1@example.com", new Date("2022-08-15")],
   ]);
 
-  let service = new VacationService(vacationData, mockMailSender.object());
+  let service = new VacationService(vacationData, mockMailSender.object(), mockClock.object());
 
   service.processMail(testMail);
 
   mockMailSender.verify(instance => instance.sendMail(It.IsAny()), Times.Never());
 });
+
+// try again
